@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
 export default function FormField(props) {
-  const { required, type, placeholder, label, pattern, errorMsg, fn } = props;
-  const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
+  const {
+    required,
+    type,
+    placeholder,
+    label,
+    pattern,
+    errorMsg,
+    value,
+  } = props;
 
   const onBlur = (event) => {
     setValid(event.target.checkValidity());
-  };
-
-  const onChange = (event) => {
-    setValue(event.target.value);
-    setValid(true);
   };
 
   return (
@@ -24,7 +26,7 @@ export default function FormField(props) {
           placeholder={placeholder}
           pattern={pattern}
           value={value}
-          onChange={onChange}
+          onChange={props.handleChange}
           onBlur={onBlur}
         />
         <div className="fieldUnderline"></div>
