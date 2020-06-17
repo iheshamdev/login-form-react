@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { BASE_API_URL } from './contestants';
 import getCookie from '../helpers/getCookie';
-// import { toFormData } from './helpers';
 
 const HTTP_REQUEST = async (
   method,

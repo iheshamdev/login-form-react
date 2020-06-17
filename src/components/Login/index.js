@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { POST } from '../../common/HTTP_Module';
 import './style.scss';
+import React, { useState } from 'react';
+import { Route, Link } from 'react-router-dom';
 import FormField from '../shared/FormField';
-import getCookie from '../../helpers/getCookie';
+import Register from '../register';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (e.target.checkValidity()) {
-      // Call the API & Post the data EX:-
-      console.log('Submitted');
-      // POST(getCookie('token'), '/user', { username, password });
+      alert('Form Submitted');
     }
   };
 
@@ -29,7 +27,7 @@ const Login = () => {
           pattern=".{2,}"
           errorMsg="At least 2 Chars"
           value={username}
-          handleChange={(e) => setUsername(e.target.value)}
+          handleChange={e => setUsername(e.target.value)}
         />
         <FormField
           required={true}
@@ -39,15 +37,15 @@ const Login = () => {
           pattern=".{6,}"
           errorMsg="At least 6 Chars"
           value={password}
-          handleChange={(e) => setPassword(e.target.value)}
+          handleChange={e => setPassword(e.target.value)}
         />
       </div>
       <div className="formActions">
         <button type="submit">Submit</button>
       </div>
+      <Link to="/register">Register</Link>
     </form>
   );
 };
 
-//   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 export default Login;
